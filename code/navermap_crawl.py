@@ -232,6 +232,8 @@ def review_crawl(crawled_data, basis_column='loc_name', sep='\t'):
     final_rows = []
     save_period = 10
     for idx, row in df_rows.iterrows():
+        if not idx in [20, 24, 33]:
+            continue
         driver.get(row['link'])
         sleep(1)
 
@@ -304,5 +306,5 @@ if __name__ == '__main__':
     # save_path = 'recrwal_select_data.csv'
     # save_path = postprocess_df(save_path, basis_name='address')
     # get_link_from_placelist()
-    save_path = '../data/pilot_list2_with_link.csv'
+    save_path = '../data/여의도 맛집 list/pilot_list2_with_naver_link.csv'
     review_crawl(save_path, basis_column='name', sep=',')
